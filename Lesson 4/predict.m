@@ -6,11 +6,14 @@
 
 % ===== Prediciton Function =====
 % dataMatrix = M x N
-% thetaVector = N * 1
-% @return prob_z = M * 1 , Returns 1D array of probabilities
+% thetaVector = N x 1
+% @return predictions = M x 1 , Returns 1D array of predictions
 
-function prob_z = predict(dataMatrix , thetaVector)  
-  z = dataMatrix * thetaVector;
-  prob_z = (1 / (1+exp(-1*z)));
+function predictions = predict(dataMatrix , thetaVector)  
+  z = dataMatrix * thetaVector; % (M x N) * (N x 1) = (M x 1)
+  predictions = (1 / (1 + exp(-1*z)) );
+  
+  % Transposing cause returns 1xM , I need Mx1
+  predictions = transpose(predictions);
 return
 end

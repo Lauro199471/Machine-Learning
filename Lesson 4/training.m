@@ -9,10 +9,11 @@
 % thetaVector = N x 1
 % learning_rate  = 1 x 1
 % iter = 1 x 1
-function [thetas  cost_history] = train(dataMatrix , yValuesMatrix , thetaVector , learning_rate , iter)
+
+function [thetas  cost_history] = training(dataMatrix , yValuesMatrix , thetaVector , learning_rate , iter)
   cost_history = yValuesMatrix; % Allocate Matrix
   
-  for(i = 1 : iterations)
+  for(i = 1 : iter)
     thetas = update_thetas(dataMatrix , yValuesMatrix , thetaVector , learning_rate);
     
     % Calculate error for auditing purposes
