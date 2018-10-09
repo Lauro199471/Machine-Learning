@@ -6,20 +6,29 @@
 % learning_rate = 1 x 1
 % iter = 1 x 1
 
-% @return 
-% predictions = M x 1 , Returns 1D array of predictions
+% @return
+% predictions = N x 1 , Returns 1D array of predictions
 
-function theta = grad_desc(data_Matrix , y_vector , theta_Vector , learning_rate,iter)  
-  cost = cost_function(data_Matrix , y_vector , theta_Vector);
-  
-  for(i = 1 : iter)
-    old_cost = cost;
-    new_thetas = log_gradient(dataMatrix , yValuesMatrix , thetaVector); % Update Thetas
-    theta_Vector = theta_Vector - (learning_rate )
-    % Calculate error for auditing purposes
-    cost = cost_function(dataMatrix , yValuesMatrix , thetaVector);
-    cost_history(i) = cost;
-  end
+function [theta costHistory] = grad_desc(data_Matrix, y_vector, theta_Vector, learning_rate, iter)
+    theta = zeros(size(theta_Vector, 1), 1); % M x 1 Matrix
+    costHistory = zeros(size(theta_Vector, 1), 1); % M x 1 Matrix
+    
+    y = y_vector;
+    N = size(data_Matrix, 1);
 
-return
+    for (i = 1:iter)
+        temp = zeros(N+1,1) % add zero col
+        [cost temp] = cost_function(dataMatrix, yValuesMatrix); 
+        % Get Hypothesis and Gradient
+        [predict grad] = cost_function(dataMatrix, yValuesMatrix)
+        % Get Error
+        err = h - y;
+        % Update the gradient
+        graident = learning_rate * (1 / m) * (transpose(data_Matrix) * err);
+        theta_Vector = theta_Vector - graident;
+        costHistory(i) = cost_function(data_Matrix, y_vector, theta_Vector);
+    end
+
+    theta = theta_Vector;
+    return
 end

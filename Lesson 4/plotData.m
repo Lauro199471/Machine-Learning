@@ -1,15 +1,17 @@
-function plotData(dataMatrix , yMatrix)
+function plotData(X , Y , xLabel , yLabel)
     
-    posClass = find(yMatrix==1); % get rows # that have y = 1
-    negClass = find(yMatrix==0); % get rows # that have y = 0
+    posClass = find(Y==1); % get rows # that have y = 1
+    negClass = find(Y==0); % get rows # that have y = 0
 
-    figure;hold on
-    p1=plot(dataMatrix(posClass,1), dataMatrix(posClass,2), 'b*');
-    p2=plot(dataMatrix(negClass,1), dataMatrix(negClass,2), 'r*');
-    set(p1, 'LineWidth' , 5);
-    set(p2, 'LineWidth' , 5);
+    figure;
+    p1=plot(X(posClass,1), X(posClass,2), 'b*');
+    hold on;
+    p2=plot(X(negClass,1), X(negClass,2), 'r*');
+    set(p1, 'LineWidth' , 35);
+    set(p2, 'LineWidth' , 35);
     axis([-2 12 -2 12]);
-    xlabel('Hours Slept','FontSize',15,'FontWeight','bold');
-    ylabel('Hours Studied','FontSize',15,'FontWeight','bold');
+
+    xlabel(xLabel,'FontSize',45,'FontWeight','bold');
+    ylabel(yLabel,'FontSize',45,'FontWeight','bold');
 
 end
