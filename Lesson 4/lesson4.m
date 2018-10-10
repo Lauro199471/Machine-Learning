@@ -15,7 +15,16 @@ clear data;
 clear dataCol;
 
 %% ==================== Part 1: Plot Data ====================
-plotData(X,y,'Hours Study','Hours Slept'); 
+plotData(X,y); 
+% Put some labels 
+hold on;
+% Labels and Legend
+xlabel('Hours Study')
+ylabel('Hours Slept')
+
+% Specified in plot order
+legend('Passed', 'Failed')
+hold off;
 
 %% ============ Part 2: Compute Cost and Gradient ============
 nSamples = size(X,1); % M
@@ -38,9 +47,21 @@ fprintf('\t%f \n', grad);
 
 %% ============= Part 3: Optimizing using fminunc  =============
 learning_rate = 0.0014;
-iter = 2000000;
+iter = 8000000;
 [w cost] = gradientDescent(X, initial_w , y, learning_rate, iter);
 
 fprintf('--> Cost at Final theta (zeros): %f\n', cost);
 fprintf('--> Gradient at Final theta (zeros): \n');
 fprintf('\t%f \n', w);
+
+% Plot Boundary
+plotDecisionBoundary(w, X, y);
+% Put some labels 
+hold on;
+% Labels and Legend
+xlabel('Hours Study')
+ylabel('Hours Slept')
+
+% Specified in plot order
+legend('Passed', 'Failed')
+hold off;
