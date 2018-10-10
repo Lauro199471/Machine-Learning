@@ -1,82 +1,46 @@
-clear;
+%% Initialization
+clear ; close all; clc;
 for clc = 0:10
     disp(" ");
 end
 
-% ==================== Load the Data Set and Plot it ====================
-datafile = csvread('data_classification.csv');
-%X = datafile(:,[1, 2]); % X Matrix (M x N)
-%y = datafile(:,3);     % Y vector (M x 1) http://blog.madhukaraphatak.com/gradient-descent-for-logistic-regression-in-octave/
-% https://github.com/wang-boyu/coursera-machine-learning/blob/master/machine-learning-ex2/ex2/ex2.m
-data = load('Data.txt');
-X = data(:, [1, 2]); y = data(:, 3);
-clear datafile; % no need to keep datafile anymore
+% ===== MAIN =====
+% Load the Data Set and Plot it
+data = load('data.txt');
+dataCol = size(data,2);
 
-%% ==================== Part 1: Plotting ====================
-%  We start the exercise by first plotting the data to understand the 
-%  the problem we are working with.
+X = data( : , 1:(dataCol-1) ); % X Matrix (M x N)
+y = data( : , dataCol);      % y vector (M x 1)
+clear data;
+clear dataCol;
 
-fprintf(['Plotting data with + indicating (y = 1) examples and o ' ...
-         'indicating (y = 0) examples.\n']);
-
-plotData(X, y);
-
-% Put some labels 
-hold on;
-% Labels and Legend
-xlabel('Exam 1 score')
-ylabel('Exam 2 score')
-
-% Specified in plot order
-legend('Admitted', 'Not admitted')
-hold off;
+%% ==================== Part 1: Plot Data ====================
+plotData(X,y,'Hours Study','Hours Slept'); 
 
 %% ============ Part 2: Compute Cost and Gradient ============
-%  In this part, we will implement the cost and gradient
-%  for logistic regression.
+nSamples = size(X,1); % M
+% Add X0 Col to X
+oneCol = ones(nSamples,1);
+X = [oneCol X];
+nFeatures = size(X,2);
 
-%  Setup the data matrix appropriately, and add ones for the intercept term
-[m, n] = size(X);
-
-% Add intercept term to x and X_test
-X = [ones(m, 1) X];
-
-% Initialize fitting parameters
-initial_theta = zeros(n + 1, 1);
-
+% initalize Theta(w) parameters
+initial_w = zeros(nFeatures,1);
+% Get Initilze Predicitions
+hx = hypothesis_function(X * initial_w); % (M x N)*(N x 1)
 % Compute and display initial cost and gradient
-[cost, grad] = costFunction(initial_theta, X, y);
+cost = costFunction(X , initial_w , y , hx);
+grad = gradFunction(X , initial_w , y , hx);
 
-fprintf('Cost at initial theta (zeros): %f\n', cost);
-fprintf('Gradient at initial theta (zeros): \n');
-fprintf(' %f \n', grad);
+fprintf('--> Cost at initial theta (zeros): %f\n', cost);
+fprintf('--> Gradient at initial theta (zeros): \n');
+fprintf('\t%f \n', grad);
 
 %% ============= Part 3: Optimizing using fminunc  =============
-%  In this part, we will use a built-in function (fminunc) to find the
-%  optimal parameters theta.
+learning_rate = 0.0014;
+iter = 2000000;
+[w cost] = gradientDescent(X, initial_w , y, learning_rate, iter);
 
-%  Set options for fminunc
-options = optimset('GradObj', 'on', 'MaxIter', 400);
-
-%  Run fminunc to obtain the optimal theta
-%  This function will return theta and the cost 
-[theta, cost] = ...
-	fminunc(@(t)(costFunction(t, X, y)), initial_theta, options);
-
-% Print theta to screen
-fprintf('Cost at theta found by fminunc: %f\n', cost);
-fprintf('theta: \n');
-fprintf(' %f \n', theta);
-
-% Plot Boundary
-plotDecisionBoundary(theta, X, y);
-
-% Put some labels 
-hold on;
-% Labels and Legend
-xlabel('Exam 1 score')
-ylabel('Exam 2 score')
-
-% Specified in plot order
-legend('Admitted', 'Not admitted')
-hold off;
+fprintf('--> Cost at Final theta (zeros): %f\n', cost);
+fprintf('--> Gradient at Final theta (zeros): \n');
+fprintf('\t%f \n', w);

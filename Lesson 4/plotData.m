@@ -1,21 +1,20 @@
-function plotData(X, y)
-%PLOTDATA Plots the data points X and y into a new figure 
-%   PLOTDATA(x,y) plots the data points with + for the positive examples
-%   and o for the negative examples. X is assumed to be a Mx2 matrix.
+function plotData(X , y ,xLabel , yLabel)
+    % Create New Figure
+    figure; hold on;
 
-% Create New Figure
-figure; hold on;
+    % Find Indices of Positive and Negative Examples
+    posClass = find(y==1); % get rows # that have y = 1
+    negClass = find(y==0); % get rows # that have y = 0
 
-% Find Indices of Positive and Negative Examples
-pos = find(y==1);
-neg = find(y == 0);
+    p1=plot(X(posClass,1), X(posClass,2), 'b*');
+    hold on;
+    p2=plot(X(negClass,1), X(negClass,2), 'r*');
+    set(p1, 'LineWidth' , 35);
+    set(p2, 'LineWidth' , 35);
+    axis([-2 12 -2 12]);
 
-axis([-2 12 -2 12]);
-% Plot Examples
-plot(X(pos, 1), X(pos, 2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
-plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
+    xlabel(xLabel,'FontSize',50,'FontWeight','bold');
+    ylabel(yLabel,'FontSize',50,'FontWeight','bold');
 
-
-hold off;
-
+    hold off;
 end
