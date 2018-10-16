@@ -1,4 +1,4 @@
-% sepal_length sepal_width petal_length petal_width species
+%  species
 
 clear;
 for clc = 0:30
@@ -13,4 +13,7 @@ labelVector = data(:,size(data,2));
 % Plot Data
 plotFeature(featureMatrix,labelVector);
 
-A = classify_data(labelVector)
+[sepal_length_splits sepal_width_splits petal_length_splits petal_width_splits] =  get_potential_splits(featureMatrix);
+
+figure(1)
+plot([petal_length_splits; petal_length_splits], repmat(ylim',1,size(petal_length_splits,2)), '-k')
