@@ -1,5 +1,11 @@
-%  species
-
+% 'y' - yellow
+% 'm' - magenta
+% 'c' - cyan
+% 'r' - red
+% 'g' - green
+% 'b' - blue
+% 'w' - white
+% 'k' - black
 clear;
 for clc = 0:30
     disp(" ");
@@ -16,4 +22,5 @@ plotFeature(featureMatrix,labelVector);
 [sepal_length_splits sepal_width_splits petal_length_splits petal_width_splits] =  get_potential_splits(featureMatrix);
 
 figure(1)
-plot([petal_length_splits; petal_length_splits], repmat(ylim',1,size(petal_length_splits,2)), '-k')
+vline(petal_length_splits,'k');
+hline(petal_width_splits ,'k');
