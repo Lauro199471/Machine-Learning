@@ -4,6 +4,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
     [uniqueValues uniqueValues_counts] = uniqueness(valuesFeature);
     
     % Get Split of 2 points by adding and dividing by 2 for midway split
+    ptr = 1;
     for(index = 1 : length(uniqueValues))
         if(index > 1)
             currentValue = uniqueValues(index);
@@ -11,6 +12,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
 
             potential_split = (currentValue + previosValue ) / 2;
             sepal_length_splits(index-1) = potential_split; % -1 cause we skip 1
+            ptr = ptr + 1;
         end
     end
 
@@ -19,6 +21,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
     [uniqueValues uniqueValues_counts] = uniqueness(valuesFeature);
     
     % Get Split of 2 points by adding and dividing by 2 for midway split
+    ptr = 1;
     for(index = 1 : length(uniqueValues))
         if(index > 1)
             currentValue = uniqueValues(index);
@@ -26,6 +29,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
 
             potential_split = (currentValue + previosValue ) / 2;
             sepal_width_splits(index-1) = potential_split; % -1 cause we skip 1
+            ptr = ptr + 1;
         end
     end
 
@@ -34,6 +38,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
     [uniqueValues uniqueValues_counts] = uniqueness(valuesFeature);
     
     % Get Split of 2 points by adding and dividing by 2 for midway split
+    ptr = 1;
     for(index = 1 : length(uniqueValues))
         if(index > 1)
             currentValue = uniqueValues(index);
@@ -41,6 +46,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
 
             potential_split = (currentValue + previosValue ) / 2;
             petal_length_splits(index-1) = potential_split; % -1 cause we skip 1
+            ptr = ptr + 1;
         end
     end
 
@@ -49,6 +55,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
     [uniqueValues uniqueValues_counts] = uniqueness(valuesFeature);
     
     % Get Split of 2 points by adding and dividing by 2 for midway split
+    ptr = 1;
     for(index = 1 : length(uniqueValues))
         if(index > 1)
             currentValue = uniqueValues(index);
@@ -56,6 +63,7 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
 
             potential_split = (currentValue + previosValue ) / 2;
             petal_width_splits(index-1) = potential_split; % -1 cause we skip 1
+            ptr = ptr + 1;
         end
     end
 end
