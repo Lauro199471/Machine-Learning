@@ -66,4 +66,10 @@ function [sepal_length_splits sepal_width_splits petal_length_splits petal_width
             ptr = ptr + 1;
         end
     end
+
+    sepal_length_splits = transpose(sepal_length_splits);
+    sepal_width_splits = transpose(sepal_width_splits);
+    petal_length_splits = transpose(petal_length_splits);
+    petal_width_splits = transpose(petal_width_splits);
+return
 end
