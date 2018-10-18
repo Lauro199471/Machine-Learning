@@ -6,7 +6,7 @@
 % 'b' - blue
 % 'w' - white
 % 'k' - black
-% sepal_length  sepal_width  petal_length  petal_width  species
+% sepal_length  sepal_width  petal_length    species
 clear;
 for clc = 0:30
     disp(" ");
@@ -18,17 +18,21 @@ featureMatrix = data(:, 1:size(data,2)-1);
 labelVector = data(:,size(data,2));
 
 % Plot Data
-plotFeature(featureMatrix,labelVector);
+
 %testSplit(featureMatrix , labelVector); % Test 
 
-%[ sepal_length_splits sepal_width_splits petal_length_splits petal_width_splits] =  get_potential_splits(featureMatrix);
+[ sepal_length_splits sepal_width_splits petal_length_splits petal_width_splits] =  get_potential_splits(featureMatrix);
 
-%figure(1);
-%vline(petal_length_splits,'k');
+plotFeature(featureMatrix,labelVector);
+vline(petal_width_splits,'k');
 %hline(petal_width_splits ,'k');
+%entropy = calculate_entropy(labelVector(51:150));
 
-entropy = calculate_entropy(labelVector(1:50))
+[data_above data_below] = split_data(featureMatrix , 4 , 0.8);
+overal_entropy = calculate_Overall_entropy(data_below , data_above)
 
 
-
+%plotFeature(featureMatrix,labelVector);
+%hold on;
+%vline( 0.8 ,'k');
 

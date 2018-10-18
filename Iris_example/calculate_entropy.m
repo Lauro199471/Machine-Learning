@@ -1,6 +1,6 @@
 function entropy = calculate_entropy(data)
-  dataCol = data(: , size(data,2));  
-  [uniqueClasses uniqueClasses_counts] = uniqueness(dataCol);
+ 
+  [uniqueClasses uniqueClasses_counts] = uniqueness(data);
   
   probability = uniqueClasses_counts ./ sum(uniqueClasses_counts);
   
