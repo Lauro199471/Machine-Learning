@@ -39,7 +39,7 @@ vline(potential_splits('4'),'k');
 %hline(petal_width_splits ,'k');
 %entropy = calculate_entropy(labelVector(51:150));
 
-[data_above data_below] = split_data(data , 4 , 1.05);
+
 overal_entropy = calculate_Overall_entropy(data_below , data_above);
 
 
