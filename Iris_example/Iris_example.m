@@ -6,7 +6,8 @@
 % 'b' - blue
 % 'w' - white
 % 'k' - black
-% sepal_length  sepal_width  petal_length    species
+% sepal_length  sepal_width  petal_length petal_width species
+%      1             2            3            4         5
 clear;
 for clc = 0:30
     disp(" ");
@@ -21,18 +22,29 @@ labelVector = data(:,size(data,2));
 
 %testSplit(featureMatrix , labelVector); % Test 
 
-[ sepal_length_splits sepal_width_splits petal_length_splits petal_width_splits] =  get_potential_splits(featureMatrix);
+potential_splits =  get_potential_splits(data);
+[best_split_column best_split_value] = determine_best_split(data , potential_splits);
+
+for k = keys(potential_splits)
+  thekey = k{1}; % The curly braces are the key, so to speak
+   h = potential_splits(thekey);
+end
+
+h
 
 plotFeature(featureMatrix,labelVector);
-vline(petal_width_splits,'k');
+vline(potential_splits('4'),'k');
+
+
 %hline(petal_width_splits ,'k');
 %entropy = calculate_entropy(labelVector(51:150));
 
 [data_above data_below] = split_data(data , 4 , 1.05);
-overal_entropy = calculate_Overall_entropy(data_below , data_above)
+overal_entropy = calculate_Overall_entropy(data_below , data_above);
 
 
 plotFeature(featureMatrix,labelVector);
 hold on;
 vline( 1.05 ,'k');
+
 
