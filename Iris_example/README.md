@@ -107,7 +107,7 @@ yes
 This function gets the uniqueness of the data 
 
 @params
-* data : M x N Matrix , this is the data matrix
+* data : M x 1 Matrix , this is the data matrix
 
 @returns
 * uniqueClasses : M x 1 , returns the different values of data matrix
