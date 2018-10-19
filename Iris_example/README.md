@@ -105,6 +105,7 @@ yes
 ```
 # Uniqueness
 This function gets the uniqueness of the data 
+
 @params
 * data : M x N Matrix , this is the data matrix
 
