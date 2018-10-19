@@ -14,37 +14,60 @@ for clc = 0:30
 end
 % ========== Main ===========
 % Load and Prepare Data
+%data = csvread('iris.csv');
+%plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
+%clear data;
+
+
 data = csvread('iris.csv');
-featureMatrix = data(:, 1:size(data,2)-1);
-labelVector = data(:,size(data,2));
+disp('Is data(150x5) pure?');
+pureData = check_purity(data);
+if(pureData == 1)
+  disp('yes');
+else
+  disp('no');
+end
+
+disp('Is data(50x5) pure?');
+pureData = check_purity(data(1:50,:));
+if(pureData == 1)
+  disp('yes');
+else
+  disp('no');
+end
+clear data;
+
+%featureMatrix = data(:, 1:size(data,2)-1);
+
+%labelVector = data(:,size(data,2));
 
 % Plot Data
 
 %testSplit(featureMatrix , labelVector); % Test 
 
-potential_splits =  get_potential_splits(data);
-[best_split_column best_split_value] = determine_best_split(data , potential_splits);
+%potential_splits =  get_potential_splits(data);
+%[best_split_column best_split_value] = determine_best_split(data , potential_splits);
 
-for k = keys(potential_splits)
-  thekey = k{1}; % The curly braces are the key, so to speak
-   h = potential_splits(thekey);
-end
+%for k = keys(potential_splits)
+%  thekey = k{1}; % The curly braces are the key, so to speak
+%   h = potential_splits(thekey);
+%end
 
-h
+%h
 
-plotFeature(featureMatrix,labelVector);
-vline(potential_splits('4'),'k');
+%plotFeature(featureMatrix,labelVector);
+%vline(potential_splits('4'),'k');
 
 
 %hline(petal_width_splits ,'k');
 %entropy = calculate_entropy(labelVector(51:150));
 
 
-overal_entropy = calculate_Overall_entropy(data_below , data_above);
+%overal_entropy = calculate_Overall_entropy(data_below , data_above);
 
 
-plotFeature(featureMatrix,labelVector);
-hold on;
-vline( 1.05 ,'k');
+%plotFeature(featureMatrix,labelVector);
+%hold on;
+%vline( 1.05 ,'k');
 
 
