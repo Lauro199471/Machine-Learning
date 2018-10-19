@@ -4,7 +4,9 @@ This function plots the Data Matrix
 * data : M x N Matrix , this is the data matrix
 * xAxis : 1x1 , determines what feature should be in the X-Axis
 * yAxis : 1x1 , determines what feature should be in the X-Axis
-
+* xAxisName : string , name for X-Axis for plot
+* yAxisName : string , name for Y-Axis for plot
+* titleName : string , name for title for plot
 ```Matlab
 function plotFeature(data,xAxis,yAixs,xAxisName,yAixsName,titleName)
   
