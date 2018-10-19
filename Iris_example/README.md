@@ -52,8 +52,9 @@ plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
 
 ![er](https://user-images.githubusercontent.com/13907836/47192330-75d32500-d301-11e8-96a8-0b71eb60f9a0.PNG)
 
-# Plot Data
+# Data Purity Check
 This function checks how pure the label vector. 
+
 @params
 * data : M x N Matrix , this is the data matrix
 
