@@ -1,5 +1,6 @@
 # Plot Data
 This function plots the Data Matrix
+
 @params
 * data : M x N Matrix , this is the data matrix
 * xAxis : 1x1 , determines what feature should be in the X-Axis
