@@ -47,6 +47,8 @@ plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
 ```
 **Output**
 
+![er](https://user-images.githubusercontent.com/13907836/47192330-75d32500-d301-11e8-96a8-0b71eb60f9a0.PNG)
+
 
 
 | Sepal Length   | Sepal Width   | Petal Length  | Petal Width  | Species |
