@@ -60,6 +60,49 @@ This function checks how pure the label vector.
 @returns
 * isPurity : 1 x 1 , returns if data is pure or not
 
+```Matlab
+function isPurity = check_purity(data)
+  isPurity = 0;
+  labelVector = data(: , size(data,2));
+
+  [uniqueClasses uniqueClasses_counts] = uniqueness(labelVector);
+  numOfLabel = length(uniqueClasses); % counts how many different values for label the data has
+  
+  if( numOfLabel == 1) % this means its pure , 1 class label
+    isPurity = 1;
+  else
+    isPurity = 0;
+  end
+end
+```
+
+**Example**
+```Matlab
+data = csvread('iris.csv');
+disp('Is data(150x5) pure?');
+pureData = check_purity(data);
+if(pureData == 1)
+  disp('yes');
+else
+  disp('no');
+end
+
+disp('Is data(50x5) pure?');
+pureData = check_purity(data(1:50,:));
+if(pureData == 1)
+  disp('yes');
+else
+  disp('no');
+end
+```
+**Output**
+```matlab
+Is data(150x5) pure?
+no
+Is data(50x5) pure?
+yes
+```
+
 | Sepal Length   | Sepal Width   | Petal Length  | Petal Width  | Species |
 |----|----|----|----|--------|
 | 5.1 | 3.5 | 1.4 | 0.2 | 0 |
