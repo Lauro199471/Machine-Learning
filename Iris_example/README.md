@@ -103,6 +103,50 @@ no
 Is data(50x5) pure?
 yes
 ```
+# Uniqueness
+This function gets the uniqueness of the data 
+@params
+* data : M x N Matrix , this is the data matrix
+
+@returns
+* uniqueClasses : M x 1 , returns the different values of data matrix
+* uniqueClasses_counts : Mx2 returns how many of that value is in Data
+
+```Matlab
+function [uniqueClasses uniqueClasses_counts] = uniqueness(data)
+  [uniqueClasses , B , ic] = unique(data);
+  uniqueClasses_counts = accumarray(ic,1);
+  
+return
+end
+```
+
+**Example**
+```Matlab
+data = csvread('iris.csv');
+disp('Is data(150x5) pure?');
+pureData = check_purity(data);
+if(pureData == 1)
+  disp('yes');
+else
+  disp('no');
+end
+
+disp('Is data(50x5) pure?');
+pureData = check_purity(data(1:50,:));
+if(pureData == 1)
+  disp('yes');
+else
+  disp('no');
+end
+```
+**Output**
+```matlab
+Is data(150x5) pure?
+no
+Is data(50x5) pure?
+yes
+```
 
 | Sepal Length   | Sepal Width   | Petal Length  | Petal Width  | Species |
 |----|----|----|----|--------|
