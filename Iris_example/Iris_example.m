@@ -18,24 +18,10 @@ end
 %plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
 %clear data;
 
+data = csvread('iris-sample.csv');
+labelVector = data( : , size(data,2) );
+[classes classCounts] = uniqueness(labelVector);
 
-data = csvread('iris.csv');
-disp('Is data(150x5) pure?');
-pureData = check_purity(data);
-if(pureData == 1)
-  disp('yes');
-else
-  disp('no');
-end
-
-disp('Is data(50x5) pure?');
-pureData = check_purity(data(1:50,:));
-if(pureData == 1)
-  disp('yes');
-else
-  disp('no');
-end
-clear data;
 
 %featureMatrix = data(:, 1:size(data,2)-1);
 
