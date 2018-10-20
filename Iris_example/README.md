@@ -105,13 +105,12 @@ yes
 ```
 # Uniqueness
 This function gets the uniqueness of the data 
-
 @params
 * data : M x 1 Matrix , this is the data matrix
 
 @returns
 * uniqueClasses : M x 1 , returns the different values of data matrix
-* uniqueClasses_counts : Mx2 returns how many of that value is in Data
+* uniqueClasses_counts : M x 1, returns how many of that value is in Data
 
 ```Matlab
 function [uniqueClasses uniqueClasses_counts] = uniqueness(data)
@@ -123,23 +122,22 @@ end
 ```
 
 **Example**
+iris-sample.csv
+| Sepal Length   | Sepal Width   | Petal Length  | Petal Width  | Species |
+|----|----|----|----|--------|
+| 5.1 | 3.5 | 1.4 | 0.2 | 0 |
+| 4.9 | 3.0 | 1.4 | 0.2 | 0 |
+| 4.7 | 3.2 | 1.3 | 0.2 | 0 |
+| 7.0 | 3.2 | 4.7 | 1.4 | 1 |
+| 6.9 | 3.1 | 4.9 | 1.5 | 1 |
+| 6.3 | 3.3 | 6.0 | 2.5 | 2 |
+| 5.8 | 2.7 | 5.1 | 1.9 | 2 |
+| 7.1 | 3.0 | 5.9 | 2.1 | 2 |
+| 6.3 | 2.9 | 5.6 | 1.8 | 2 |
 ```Matlab
-data = csvread('iris.csv');
-disp('Is data(150x5) pure?');
-pureData = check_purity(data);
-if(pureData == 1)
-  disp('yes');
-else
-  disp('no');
-end
-
-disp('Is data(50x5) pure?');
-pureData = check_purity(data(1:50,:));
-if(pureData == 1)
-  disp('yes');
-else
-  disp('no');
-end
+data = csvread('iris-sample.csv');
+labelVector = data( : , size(data,2) );
+[classes classCounts] = uniqueness(labelVector);
 ```
 **Output**
 ```matlab
@@ -148,7 +146,6 @@ no
 Is data(50x5) pure?
 yes
 ```
-
 | Sepal Length   | Sepal Width   | Petal Length  | Petal Width  | Species |
 |----|----|----|----|--------|
 | 5.1 | 3.5 | 1.4 | 0.2 | 0 |
