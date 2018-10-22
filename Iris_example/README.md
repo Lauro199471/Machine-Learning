@@ -180,7 +180,7 @@ end
 
 **Example**
 ```Matlab
-data = csvread('iris.csv');
+data = csvread('iris-sample.csv');
 mostLikey = classify_data(data);
 
 if( mostLikey == 0)
