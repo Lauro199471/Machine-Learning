@@ -163,8 +163,7 @@ This function returns which label class has the most in the label vector
 * data : M x N Matrix , this is the data matrix
 
 @returns
-* uniqueClasses : M x 1 , returns the different values of data matrix
-* uniqueClasses_counts : M x 1, returns how many of that value is in Data
+* classification : 1 x 1 , returns which label class is most in data matrix
 
 ```Matlab
 function classification = classify_data(data)
