@@ -156,4 +156,42 @@ classCounts =
    2
    4
 ```
+# Classify
+This function returns which label class has the most in the label vector
 
+@params
+* data : M x N Matrix , this is the data matrix
+
+@returns
+* uniqueClasses : M x 1 , returns the different values of data matrix
+* uniqueClasses_counts : M x 1, returns how many of that value is in Data
+
+```Matlab
+function classification = classify_data(data)
+  ### MAKE SURE TO READ THE LABEL VECTOR ADD NEW LINE CODE ###
+  
+  #####################
+  [uniqueClasses uniqueClasses_counts] = uniqueness(data);
+  [valueMax classificationIndex] = max(uniqueClasses_counts);
+  classification = uniqueClasses(classificationIndex);
+  return
+end
+```
+
+**Example**
+```Matlab
+data = csvread('iris.csv');
+mostLikey = classify_data(data);
+
+if( mostLikey == 0)
+    disp("Iris-Setosa");
+elseif( mostLikey == 1)
+    disp("Iris-versicolor");
+elseif( mostLikey == 2)
+    disp("Iris-virginica");
+end
+```
+**Output**
+```matlab
+Iris-virginica
+```
