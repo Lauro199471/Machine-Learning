@@ -237,6 +237,16 @@ end
 
 **Example**
 ```Matlab
+% 'y' - yellow
+% 'm' - magenta
+% 'c' - cyan
+% 'r' - red
+% 'g' - green
+% 'b' - blue
+% 'w' - white
+% 'k' - black
+% sepal_length  sepal_width  petal_length petal_width species
+%      1             2            3            4         5
 data = csvread('iris.csv');
 splitMap = get_potential_splits(data);
 plotFeature(data,3,4,'Petal Length','Petal width','Petal Leaves');
