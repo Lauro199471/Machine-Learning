@@ -38,11 +38,11 @@ function plotFeature(data,xAxis,yAixs,xAxisName,yAixsName,titleName)
   
   % Plot Data
   figure;
-  scatter(petal_width_setosa , petal_length_setosa , 'r' , 'filled');
+  scatter(petal_length_setosa , petal_width_setosa , 'r' , 'filled');
   hold on;
-  scatter(petal_width_vericolor , petal_length_vericolor , 'g' , 'filled');
+  scatter(petal_length_vericolor , petal_width_vericolor , 'g' , 'filled');
   hold on;
-  scatter(petal_width_virginca , petal_length_virginca , 'b' , 'filled');
+  scatter(petal_length_virginca , petal_width_virginca , 'b' , 'filled');
   xlabel(xAxisName);
   ylabel(yAixsName);
   title(titleName);
