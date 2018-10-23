@@ -256,7 +256,7 @@ hold on;
 vline(splitMap.(int2str(petal_width)),'k');
 ```
 **Output**
-![screenshot from 2018-10-22 21-08-39](https://user-images.githubusercontent.com/13907836/47335161-bd79e980-d63e-11e8-9e54-c433a7ff66aa.png)
+![342ew](https://user-images.githubusercontent.com/13907836/47339942-9c6ec400-d651-11e8-9157-141158f7c4e0.PNG)
 
 # Split Data
 This function ...
