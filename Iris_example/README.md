@@ -211,16 +211,15 @@ This function ...
 * ...
 
 ```Matlab
-function containerSplit =  get_potential_splits(data)
-    containerSplit = containers.Map;
-
+function hashMAP =  get_potential_splits(data)
     nFeatures = size(data,2) - 1; % -1 because we dont need label
-    for(column_index = 1 : nFeatures)
+
+    for(column_index = 1 : nFeatures) % loop through rows
         column_value = data( : , column_index);
         [uniqueValues uniqueValues_counts] = uniqueness(column_value);
 
         for(row_index_uniqueValues = 1 : length(uniqueValues))
-            if(row_index_uniqueValues > 1)
+            if(row_index_uniqueValues > 1) % skip one cause no avarage
                 currentValue = uniqueValues(row_index_uniqueValues);
                 previosValue = uniqueValues(row_index_uniqueValues - 1);
 
@@ -229,7 +228,7 @@ function containerSplit =  get_potential_splits(data)
             end
         end
 
-        containerSplit(int2str(column_index)) = split_values;
+        hashMAP.(int2str(column_index)) = split_values;
     end
 
 return
@@ -239,9 +238,10 @@ end
 **Example**
 ```Matlab
 data = csvread('iris.csv');
-potSplits = get_potential_splits(data);
+splitMap = get_potential_splits(data);
+plotFeature(data,3,4,'Petal Length','Petal width','Petal Leaves');
+petal_width = 4;
+hold on;
+vline(splitMap.(int2str(petal_width)),'k');
 ```
 **Output**
-```matlab
-...
-```
