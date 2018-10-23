@@ -1,3 +1,9 @@
+
+| Label Name   | Label Value   |
+|----|----|
+| Iris-Setosa | 0 |
+| Iris-Vericolor | 1 |
+| Iris-Virginca | 2 |
 # Plot Data
 This function plots the Data Matrix
 
