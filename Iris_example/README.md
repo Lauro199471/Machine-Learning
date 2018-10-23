@@ -249,8 +249,9 @@ end
 %      1             2            3            4         5
 data = csvread('iris.csv');
 splitMap = get_potential_splits(data);
-plotFeature(data,3,4,'Petal Length','Petal width','Petal Leaves');
 petal_width = 4;
+
+plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
 hold on;
 vline(splitMap.(int2str(petal_width)),'k');
 ```
