@@ -56,7 +56,7 @@ plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
 ```
 **Output**
 
-![er](https://user-images.githubusercontent.com/13907836/47192330-75d32500-d301-11e8-96a8-0b71eb60f9a0.PNG)
+![asdf](https://user-images.githubusercontent.com/13907836/47335200-f3b76900-d63e-11e8-83d0-0f391f34150e.png)
 
 # Data Purity Check
 This function checks how pure the label vector. 
