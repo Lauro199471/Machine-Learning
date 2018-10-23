@@ -19,9 +19,15 @@ end
 %clear data;
 
 data = csvread('iris-sample.csv');
-labelVector = data( : , size(data,2) );
-[classes classCounts] = uniqueness(labelVector);
+mostLikey = classify_data(data);
 
+if( mostLikey == 0)
+    disp("Iris-Setosa");
+elseif( mostLikey == 1)
+    disp("Iris-versicolor");
+elseif( mostLikey == 2)
+    disp("Iris-virginica");
+end
 
 %featureMatrix = data(:, 1:size(data,2)-1);
 
