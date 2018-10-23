@@ -257,3 +257,72 @@ vline(splitMap.(int2str(petal_width)),'k');
 ```
 **Output**
 ![screenshot from 2018-10-22 21-08-39](https://user-images.githubusercontent.com/13907836/47335161-bd79e980-d63e-11e8-9e54-c433a7ff66aa.png)
+
+# Split Data
+This function ...
+
+@params
+* ...
+
+@returns
+* ...
+
+```Matlab
+function [data_above data_below] = split_data(data , split_colm , split_value )
+  nSamples = size(data , 1);
+  split_data = data(: , split_colm);
+
+  ptr1 = 1;
+  ptr2 = 1;
+
+  for(row_index = 1 : nSamples)
+    if(split_data(row_index) <= split_value)
+      below_index(ptr1,1) = ptr1;
+      ptr1 = ptr1 + 1;
+    else
+      above_index(ptr2,1) = ptr2;
+      ptr2 = ptr2 + 1;
+    end
+  end
+
+  above_index = size(below_index,1) .+ above_index;
+  
+  for(below_index_i = 1 : size(below_index,1))
+    data_below(below_index_i,:) = data(below_index(below_index_i) , :);
+  end
+
+  for(above_index_i = 1 : size(above_index,1))
+    data_above(above_index_i,:) = data(above_index(above_index_i) , :);
+  end
+
+  return
+end
+```
+
+**Example**
+```Matlab
+data = csvread('iris.csv');
+split_colm = 4;
+split_decision = 0.8;
+[data_above data_below] = split_data(data , split_colm , split_decision )
+
+data_below_length = data_below(:,3);
+data_below_width  = data_below(:,4);
+scatter(data_below_width , data_below_length , 'r' , 'filled');
+
+hold on;
+
+data_above_length = data_above(:,3);
+data_above_width  = data_above(:,4);
+scatter(data_above_width , data_above_length , 'b' , 'filled');
+
+hold on;
+
+vline(split_decision,'k');
+
+xlabel('Petal Width');
+ylabel('Petal Length');
+title('Petal Leaves');
+```
+**Output**
+![3e4r](https://user-images.githubusercontent.com/13907836/47339834-469a1c00-d651-11e8-8709-f7c155521f28.PNG)
