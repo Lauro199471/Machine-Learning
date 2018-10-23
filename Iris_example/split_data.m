@@ -1,4 +1,4 @@
-function [data_above data_below] = split_data(data , split_colm , split_decision )
+function [data_above data_below] = split_data(data , split_colm , split_value )
   nSamples = size(data , 1);
   split_data = data(: , split_colm);
 
@@ -6,7 +6,7 @@ function [data_above data_below] = split_data(data , split_colm , split_decision
   ptr2 = 1;
 
   for(row_index = 1 : nSamples)
-    if(split_data(row_index) <= split_decision)
+    if(split_data(row_index) <= split_value)
       below_index(ptr1,1) = ptr1;
       ptr1 = ptr1 + 1;
     else
