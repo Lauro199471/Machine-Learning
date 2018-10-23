@@ -38,11 +38,11 @@ function plotFeature(data,xAxis,yAixs,xAxisName,yAixsName,titleName)
   
   % Plot Data
   figure;
-  scatter(petal_width_setosa , petal_length_setosa , 'r' , 'filled');
+  scatter(petal_length_setosa , petal_width_setosa , 'r' , 'filled');
   hold on;
-  scatter(petal_width_vericolor , petal_length_vericolor , 'g' , 'filled');
+  scatter(petal_length_vericolor , petal_width_vericolor , 'g' , 'filled');
   hold on;
-  scatter(petal_width_virginca , petal_length_virginca , 'b' , 'filled');
+  scatter(petal_length_virginca , petal_width_virginca , 'b' , 'filled');
   xlabel(xAxisName);
   ylabel(yAixsName);
   title(titleName);
@@ -56,7 +56,7 @@ plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
 ```
 **Output**
 
-![er](https://user-images.githubusercontent.com/13907836/47192330-75d32500-d301-11e8-96a8-0b71eb60f9a0.PNG)
+![asdf](https://user-images.githubusercontent.com/13907836/47335200-f3b76900-d63e-11e8-83d0-0f391f34150e.png)
 
 # Data Purity Check
 This function checks how pure the label vector. 
@@ -211,16 +211,15 @@ This function ...
 * ...
 
 ```Matlab
-function containerSplit =  get_potential_splits(data)
-    containerSplit = containers.Map;
-
+function hashMAP =  get_potential_splits(data)
     nFeatures = size(data,2) - 1; % -1 because we dont need label
-    for(column_index = 1 : nFeatures)
+
+    for(column_index = 1 : nFeatures) % loop through rows
         column_value = data( : , column_index);
         [uniqueValues uniqueValues_counts] = uniqueness(column_value);
 
         for(row_index_uniqueValues = 1 : length(uniqueValues))
-            if(row_index_uniqueValues > 1)
+            if(row_index_uniqueValues > 1) % skip one cause no avarage
                 currentValue = uniqueValues(row_index_uniqueValues);
                 previosValue = uniqueValues(row_index_uniqueValues - 1);
 
@@ -229,7 +228,7 @@ function containerSplit =  get_potential_splits(data)
             end
         end
 
-        containerSplit(int2str(column_index)) = split_values;
+        hashMAP.(int2str(column_index)) = split_values;
     end
 
 return
@@ -238,10 +237,23 @@ end
 
 **Example**
 ```Matlab
+% 'y' - yellow
+% 'm' - magenta
+% 'c' - cyan
+% 'r' - red
+% 'g' - green
+% 'b' - blue
+% 'w' - white
+% 'k' - black
+% sepal_length  sepal_width  petal_length petal_width species
+%      1             2            3            4         5
 data = csvread('iris.csv');
-potSplits = get_potential_splits(data);
+splitMap = get_potential_splits(data);
+petal_width = 4;
+
+plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
+hold on;
+vline(splitMap.(int2str(petal_width)),'k');
 ```
 **Output**
-```matlab
-...
-```
+![screenshot from 2018-10-22 21-08-39](https://user-images.githubusercontent.com/13907836/47335161-bd79e980-d63e-11e8-9e54-c433a7ff66aa.png)
