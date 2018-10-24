@@ -1,19 +1,20 @@
-function [best_split_column best_split_value] = determine_best_split(data , potential_splits)
+function [potential_splits best_split_value] = determine_best_split(data)
     overall_entropy = 9999;
 
-    colmun_index = 1;
+    potential_splits =  get_potential_splits(data);
 
-    for (key_index = keys(potential_splits)) 
-
-        thekey = key_index{1};
-        potential_splits_values = potential_splits(thekey);
-
-        for(value_index = 1 : size(potential_splits_values,2))
-        [data_above data_below] = split_data(data , colmun_index , 1.05);
+    for [val, key] = potential_splits
+        key;
     end
 
-    best_split_column = 0;
-    best_split_value  = 0;
+    for(keyIndex = 1 : 1)%str2num(key))% Loop through all keys 
+        valueLength = size(potential_splits.(int2str(keyIndex)) , 2)
+        valueArray = potential_splits.(int2str(keyIndex))
+        for(valueIndex = 1 : valueLength) % Loop through all values
+            [data_above data_below] = split_data(data , keyIndex , valueArray(10) );
+    end
 
+    potential_splits = data_above;
+    best_split_value = data_below;
 return
 end

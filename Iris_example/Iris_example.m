@@ -1,7 +1,7 @@
 data = csvread('iris.csv');
-splitMap = get_potential_splits(data);
-petal_width = 4;
+[x y] = determine_best_split(data);
 
-plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
-hold on;
-vline(splitMap.(int2str(petal_width)),'k');
+ [uniqueClasses uniqueClasses_counts] = uniqueness(data(:,1))
+ 
+ x
+ y

@@ -1,7 +1,7 @@
 function hashMAP =  get_potential_splits(data)
     nFeatures = size(data,2) - 1; % -1 because we dont need label
 
-    for(column_index = 3 : nFeatures) % loop through rows
+    for(column_index = 1 : nFeatures) % loop through rows
         column_value = data( : , column_index);
         [uniqueValues uniqueValues_counts] = uniqueness(column_value);
 
