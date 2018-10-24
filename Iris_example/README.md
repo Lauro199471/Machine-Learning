@@ -376,3 +376,43 @@ entropy = 0
 entropy =  1.0
 ```
 
+# Calculate OVERALL Entropy 
+This function ...
+
+@params
+* ...
+
+@returns
+* ...
+
+```Matlab
+function overall_entropy = calculate_Overall_entropy(data_below , data_above)
+
+    data_below_entropy = calculate_entropy(data_below);
+    data_above_entropy = calculate_entropy(data_above);
+    
+    nSamples = size(data_above,1) + size(data_below,1);
+
+    probalilityBelow = size(data_below,1) / nSamples;
+    probalilityAbove = size(data_above,1) / nSamples;
+    
+    overall_entropy = (probalilityBelow * data_below_entropy) + (probalilityAbove * data_above_entropy);
+    
+end
+```
+
+**Example**
+```Matlab
+data = csvread('iris.csv');
+
+split_colm = 4;
+split_decision = 1.05;
+[data_above data_below] = split_data(data , split_colm , split_decision );
+
+overall_entropy = calculate_Overall_entropy(data_below , data_above)
+```
+
+**Output**
+```Matlab
+overall_entropy =  0.82167
+```
