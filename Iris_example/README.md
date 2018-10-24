@@ -327,3 +327,52 @@ title('Petal Leaves');
 **Output**
 
 ![3e4r](https://user-images.githubusercontent.com/13907836/47339834-469a1c00-d651-11e8-8709-f7c155521f28.PNG)
+
+# Calculate Entropy 
+This function ...
+
+@params
+* ...
+
+@returns
+* ...
+
+```Matlab
+function entropy = calculate_entropy(data)
+  
+  labelColmIndex = size(data,2);
+  labelColm = data(: , labelColmIndex);
+
+  [uniqueClasses uniqueClasses_counts] = uniqueness(labelColm);
+  
+  probability = uniqueClasses_counts ./ sum(uniqueClasses_counts);
+  
+  for(index = 1 : size(probability,1))
+    entropy(index,1) = probability(index) * log2(1 / probability(index));
+  end
+  
+  entropy = sum(entropy);
+
+return
+end
+```
+
+**Example**
+```Matlab
+data = csvread('iris.csv');
+
+% We know its going to be 0 because
+% its only 1 class in label vector
+entropy = calculate_entropy(data(1:50 , :))
+
+
+% We know its going to be 1 because
+% its only 2 class in label vector
+entropy = calculate_entropy(data(50:150 , :))
+```
+**Output**
+```Matlab
+entropy = 0
+entropy =  1.0
+```
+
