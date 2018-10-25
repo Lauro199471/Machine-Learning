@@ -1,12 +1,15 @@
-function [best_feature_value best_split_value] = determine_best_split(data)
-    overall_entropy = 9999;
-
-    potential_splits =  get_potential_splits(data);
-
+function [best_feature_value best_split_value] = determine_best_split(data , potential_splits)
+    
     for [val, key] = potential_splits
         key;
     end
+    
+    % Find Initial Overall Entropy
+    valueArray = potential_splits.(int2str(1));
+    [data_above data_below] = split_data(data , 1 , valueArray(1) );
+    overall_entropy = calculate_Overall_entropy(data_below , data_above);
 
+    % Find Best Overall Entropy and return its value and feature numbers
     for(col_Index = 1 : str2num(key)) % Loop through all keys 
         
         valueLength = size(potential_splits.(int2str(col_Index)) , 2);
