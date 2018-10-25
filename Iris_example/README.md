@@ -202,13 +202,13 @@ Iris-virginica
 ```
 
 # Get Potential Splits
-This function ...
+This function gets all the potential splits from the data matrix by taking unique values and finding the middle split
 
 @params
-* ...
+* data : M x N Matrix , this is the data matrix
 
 @returns
-* ...
+* hashMAP: a hash map of all the potential splits and features with Feature Number being Key and splits being the Value
 
 ```Matlab
 function hashMAP =  get_potential_splits(data)
