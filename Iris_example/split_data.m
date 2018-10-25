@@ -5,6 +5,9 @@ function [data_above data_below] = split_data(data , split_colm , split_value )
   ptr1 = 1;
   ptr2 = 1;
 
+  above_index = 0;
+  below_index = 0;
+
   for(row_index = 1 : nSamples)
     if(split_data(row_index) <= split_value)
       below_index(ptr1,1) = ptr1;

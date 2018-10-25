@@ -1,7 +1,7 @@
 data = csvread('iris.csv');
+
 [x y] = determine_best_split(data);
 
- [uniqueClasses uniqueClasses_counts] = uniqueness(data(:,1))
- 
- x
- y
+plotFeature(data,4,3,'Petal Width','Petal Length','Petal Leaves');
+hold on;
+vline(y,'k');
