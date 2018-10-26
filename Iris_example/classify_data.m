@@ -1,5 +1,3 @@
-% Returns Most Label 
-
 function classification = classify_data(data)
   labelVector = data(:,size(data,2));
   [uniqueClasses uniqueClasses_counts] = uniqueness(labelVector);
