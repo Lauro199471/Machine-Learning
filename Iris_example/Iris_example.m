@@ -18,14 +18,35 @@ elseif( best_feature_value == 4)
 end
 
 question = [ best_feature_valueS , ' <= ' , num2str(best_split_value) ];
-disp(question);
 
 
 % Find Answers(recursion)
 if(check_purity(data_below) == 1)
-  disp('This is Pure');
+  disp('Yes Values is Pure');
 end
 
 if(check_purity(data_above) == 1)
-  disp('This is Pure');
+  disp('No Values is Pure');
 end
+
+dataBelowa = classify_data(data_below);
+if( dataBelowa == 0)
+    dataBelow = "Iris-Setosa";
+elseif( dataBelowa == 1)
+    dataBelow = "Iris-versicolor";
+elseif( dataBelowa == 2)
+    dataBelow = "Iris-virginica";
+end
+
+dataAbovea = classify_data(data_above);
+if( dataAbovea == 0)
+    dataAbove = "Iris-Setosa";
+elseif( dataAbovea == 1)
+    dataAbove = "Iris-versicolor";
+elseif( dataAbovea == 2)
+    dataAbove = "Iris-virginica";
+end
+
+subtree = [ question , " ? [" , dataBelow , " , " , dataAbove , "]"];
+
+subtree
