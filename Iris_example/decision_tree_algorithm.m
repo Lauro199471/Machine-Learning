@@ -1,23 +1,23 @@
-function [stringLabel subTree] = decision_tree_algorithm(data)
+function subTree = decision_tree_algorithm(data)
+
+    subTree = " ";
 
     % Is Data pure?
     if(check_purity(data) == 1)
-        disp('This is Pure');
-        classification = classify_data(data)
+        % return Label Class
+        classification = classify_data(data);
         
-        stringLabel = " ";
         if( classification == 0)
-            stringLabel = "Iris-Setosa";
+            subTree = "Iris-Setosa";
         elseif( classification == 1)
-            stringLabel = "Iris-versicolor";
+            subTree = "Iris-versicolor";
         elseif( classification == 2)
-            stringLabel = "Iris-virginica";
+            subTree = "Iris-virginica";
         end
     
     % If not then find pure
     else
-        disp('This is not pure');
-
+        % Find Feature and where to cut off
         potential_splits =  get_potential_splits(data);
         [best_feature_value best_split_value] = determine_best_split(data , potential_splits);
         [data_above data_below] = split_data(data , best_feature_value , best_split_value );
@@ -25,12 +25,11 @@ function [stringLabel subTree] = decision_tree_algorithm(data)
         question = [ num2str(best_feature_value) , ' <= ' , num2str(best_split_value) ];
         
         % Find Answers(recursion)
-        [yes_answers idc]= decision_tree_algorithm(data_below);
-        [no_answers IDC]= decision_tree_algorithm(data_above);
-        
-        StringYesNo = [yes_answers,' ',no_answers];
-
-        subTree = [question StringYesNo];
+        yes_answers_label = decision_tree_algorithm(data_below);
+        no_answers_label  = decision_tree_algorithm(data_above);
+                
+        StringYesNo = [yes_answers_label," , ",no_answers_label];
+        subTree = [question , " ? [" , StringYesNo "]\n"];
 
     end
 
