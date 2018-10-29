@@ -3,8 +3,6 @@
 
 data = csvread('iris.csv');
 
-%data = data(1:100 , : );
+Tree = decision_tree_algorithm(data);
 
-subTree = decision_tree_algorithm(data);
-
-disp(subTree);
+disp(Tree);
