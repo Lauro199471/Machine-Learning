@@ -50,3 +50,27 @@ splitMap = get_potential_splits(data);
 splitMap
 
 % =====================================
+
+% ====== 5th Lesson ======
+disp('');
+disp('Lesson 5');
+entropy = calculate_entropy(data(1:2 , :))
+
+% =====================================
+
+% ====== 6th Lesson ======
+disp('');
+disp('Lesson 6');
+potential_splits =  get_potential_splits(data);
+
+[best_feature_value best_split_value] = determine_best_split(data , potential_splits);
+best_feature_value
+best_split_value
+% =====================================
+
+disp('');
+disp('');
+disp('');
+Tree = decision_tree_algorithm(data);
+
+disp(Tree);
