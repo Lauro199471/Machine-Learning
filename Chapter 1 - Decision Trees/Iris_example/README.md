@@ -1,3 +1,4 @@
+```MATLAB
 function questionOrAns = decision_tree_algorithm(data)
 
     subTree = " ";
@@ -127,7 +128,7 @@ question = decision_tree_algorithm(data(1:101,:))
 %        subTree = "Iris-virginica"
 %    end
 %end
-
+```
 
 | Label Name   | Label Value   |
 |----|----|
