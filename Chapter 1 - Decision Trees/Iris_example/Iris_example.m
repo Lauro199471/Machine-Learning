@@ -8,19 +8,9 @@ end
 
 data = csvread('iris.csv');
 
-%Tree = decision_tree_algorithm(data);
-
-%disp(Tree);
-
 % ===== Testing =====
 
-str1 = "Hello World"; 
-C = strsplit(str1);
-
-
-
-
-% ===== Testing =====
+examplePoint = [5.1,3.5,1.4,0.2,0]
 
 % Find Feature and where to cut off
 potential_splits =  get_potential_splits(data);
@@ -28,35 +18,63 @@ potential_splits =  get_potential_splits(data);
 [data_above data_below] = split_data(data , best_feature_value , best_split_value );
 
 
-question = [ num2str(best_feature_value) , ' <= ' , num2str(best_split_value) ];
-question
+question = [ '? ' , num2str(best_feature_value) , ' <= ' , num2str(best_split_value) ];
 
 % Find Answers(recursion)
-yes_answers_label = "1";
-no_answers_label = "5 <= 8.0";
+yes_answers_label = "0";
+no_answers_label = "? 3 <= 4.85";
  
-C = {question ,{yes_answers_label , no_answers_label} }
-sdf = C{1,2}(2)
-questionList = strsplit(C{1}(1,:))
-%tree = {'1' , [best_feature_value , best_split_value , yes_answers_label , no_answers_label]};
-%tree
-%question = [num2str(tree{1,2}(1)) , ' <= ' , num2str(tree{1,2}(2))];
-%question
-%question = [num2str(best_feature_value) , ' <= ' , num2str(best_split_value)];
-%question
-%key = question;
-%values = {yes_answers_label, no_answers_label}
-%map = containers.Map(key,values)
-%map('Mon')
+C = {question , {yes_answers_label , no_answers_label} };
 
-%C = {'ONE',[56 67 78]};
-%disp(" ");
-%C(2,:) = {'TWO',[58 69 79]};
-%disp(" ");
-%C(3,:) = {'THREE',[60 68 81]};
-%disp(" ");
-%C(3,:) = {'FOUR',65};
-%C
-%disp(" ");
-%disp(" ");
-%C{2,2}(2)
+noAnsStr = C{1,2,1}{2};
+%noAnsStrSplit = strsplit(noAnsStr);
+
+yesAnsStr = C{1,2,1}{1};
+%yesAnsStrSplit = strsplit(yesAnsStr);
+
+
+questionList = strsplit(C{1}(1,:));
+
+disp('Question');
+disp(question);
+
+disp('Yes:');
+disp(yesAnsStr);
+
+disp('No:');
+disp(noAnsStr);
+
+questionSplitValueStr = questionList{1,4};
+questionFeatuValueStr = questionList{1,2};
+
+questionSplitValue = str2double(questionSplitValueStr);
+questionFeatuValueStr = str2num(questionFeatuValueStr);
+
+if(questionList{1,1} == '?')
+    
+    exFeaValue = str2num(questionList{1,2});
+    if(examplePoint(1 , exFeaValue) <= questionSplitValue)
+        answer = yesAnsStr;
+    else
+        answer = noAnsStr;
+    end
+end
+
+answerSplit = strsplit(answer);
+
+if(answerSplit{1,1} == '?')
+    % Repeat
+    disp("Here");
+else
+    answerNum = str2num(answer);
+    if( answerNum == 0)
+        subTree = "Iris-Setosa"
+    elseif( answerNum == 1)
+        subTree = "Iris-versicolor"
+    elseif( answerNum == 2)
+        subTree = "Iris-virginica"
+    end
+end
+
+
+
