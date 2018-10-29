@@ -556,7 +556,9 @@ disp(Tree);
 
 **Output**
 ```Matlab
-Petal Width <= 0.8 ? [Iris-Setosa , Petal Length <= 4.85 ? [Iris-versicolor , Petal Width <= 1.35 ? [Iris-versicolor , Iris-virginica]]]
+Petal Width <= 0.8 ? [Iris-Setosa , 
+  Petal Length <= 4.85 ? [Iris-versicolor , 
+    Petal Width <= 1.35 ? [Iris-versicolor , Iris-virginica]]]
 ```
 
 ![irisdiagram](https://user-images.githubusercontent.com/13907836/47599880-5de84a80-d96c-11e8-8ae4-75a583cb3f91.jpeg)
