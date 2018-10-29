@@ -4,6 +4,12 @@
 | Don't Play | 0 |
 | Play | 1 |
 
+|  Outlook   | Feature Value   |
+|----|----|
+| Sunny | 0 |
+| Overcast | 1 |
+| Rainy | 2 |
+
 | Outlook | Temperature | Humidity  | Windy  | Play / DontPlay |
 |----|----|----|----|--------|
 | 5.1 | 3.5 | 1.4 | 0.2 | 0 |
