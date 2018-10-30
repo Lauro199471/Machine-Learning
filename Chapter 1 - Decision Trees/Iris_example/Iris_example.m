@@ -9,17 +9,33 @@ end
 data = csvread('iris.csv');
 
 
-Tree = decision_tree_algorithm(data);
-Tree
+[Tree,x] = decision_tree_algorithm(data);
+disp(" ");
+disp(" ");
+keys(Tree)
+disp(" ");
+disp(" ");
+a = values(Tree)
 
-%A = cell2struct ({"Peter", "Hannah", "Robert";
-%                   185, 170, 168} ,
-%                 {"Name","Height"}, 1);
+%no = a{1}(2,:);
+%yes = a{1}(1,:);
 
-%B = {"Lauro" , [19 , 94]};
-%C = {"Raider", [20 , 05]};
-%B = [B ; C]
+%keys = {'Jan', 'Feb'};
+%values = {[327.2, 368.2],[23,24]};
 
-%C = [B ; C]
-%counter = 1;
-%D{counter,1} = "Paco"
+%rainfallMap = containers.Map(keys, values);
+
+
+%keys = {'Mar', 'Jun'};
+%values = {[654, 5456],[654,54]};
+
+%rainfallMapw = containers.Map(keys, values);
+%treeMap = containers.Map('KeyType','char','ValueType','char');
+%M = [rainfallMap rainfallMapw]
+%M('Mar')
+treeMap = containers.Map('KeyType','char','ValueType','char');
+values =  ['9996';'324'];
+treeMap('4 <= 1.35') = values;
+treeMap('4 <= 1.35');
+
+question = [num2str(34) , ' <= ' , num2str(3) ];
