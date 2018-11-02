@@ -1,0 +1,38 @@
+Main Algothrim
+This is where we use all the functions to make the decision tree
+
+def decision_tree_algothrim(df):
+    
+    #Check if data is Numpy or Panda for data processing
+    whatAmi = type(df);
+    if( whatAmi == np.ndarray):
+        data = df;
+    else:
+        data = df.values; # value Return a Numpy representation of the DataFrame
+        
+    # Check if Data is pure
+    if(check_purity(data) == True):
+        classificaiton = classify_data(data);
+        return classificaiton;
+    else:
+        # Get Potential Splits
+        potential_splits = get_potential_splits(data);
+        best_split_column, best_split_value = determine_best_split(data, potential_splits);
+        data_below, data_above = split_data(data, best_split_column, best_split_value);
+        
+        # Get Question
+        question = "{feature} <= {splitValue}".format(feature = best_split_column , splitValue = best_split_value);
+        subTree = {question: []};
+        
+        # Find Answers
+        yes_answers = decision_tree_algothrim(data_below);
+        no_answers = decision_tree_algothrim(data_above);
+        
+        subTree[question].append([yes_answers ,no_answers]);
+        
+        return subTree;
+        
+        
+
+tree = decision_tree_algothrim(train_df);
+pprint(tree);
