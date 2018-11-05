@@ -47,13 +47,14 @@ fprintf('\t%f \n', grad);
 
 %% ============= Part 3: Optimizing using fminunc  =============
 learning_rate = 0.0014;
-iter = 8000000;
+iter = 1;
 [w cost] = gradientDescent(X, initial_w , y, learning_rate, iter);
 
 fprintf('--> Cost at Final theta (zeros): %f\n', cost);
 fprintf('--> Gradient at Final theta (zeros): \n');
 fprintf('\t%f \n', w);
 
+w = [-25.15097375 0.20614884  0.20138778];
 % Plot Boundary
 plotDecisionBoundary(w, X, y);
 % Put some labels 
