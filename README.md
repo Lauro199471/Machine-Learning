@@ -12,6 +12,6 @@ import jupyterthemes as jt
 from jupyterthemes.stylefx import set_nb_theme
 set_nb_theme('onedork')
 
-plt.style.use(['fast'])
+plt.style.use(['fast']) 
 
 
